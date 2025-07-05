@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Hasta Randevuları</title>
+    <script>
+        function fetchRandevular() {
+            const hastaId = document.getElementById("hastaId").value;
+            fetch(`/api/appointments/hasta/${hastaId}`)
+                .then(response => response.json())
+                .then(data => {
+                    const sonucDiv = document.getElementById("sonuclar");
+                    sonucDiv.innerHTML = "";
+
+                    if (data.length === 0) {
+                        sonucDiv.innerHTML = "<p>Geçmiş randevu bulunamadı.</p>";
+                        return;
+                    }
+
+                    data.forEach(r => {
+                        const rDiv = document.createElement("div");
+                        rDiv.style.border = "1px solid #ccc";
+                        rDiv.style.padding = "10px";
+                        rDiv.style.marginBottom = "10px";
+
+                        rDiv.innerHTML = `
+                            <p><strong>Doktor:</strong> ${r.doktor.email}</p>
+                            <p><strong>Tarih:</strong> ${r.tarih}</p>
+                            <p><strong>Durum:</strong> ${r.status}</p>
+                            <p><strong>Doktor Notu:</strong> ${r.doktorNotu || "Yok"}</p>
+                        `;
+
+                        sonucDiv.appendChild(rDiv);
+                    });
+                });
+        }
+    </script>
+</head>
+<body>
+<h2>Hasta Randevularını Görüntüle</h2>
+<label>Hasta ID: </label>
+<input type="number" id="hastaId" placeholder="ID girin">
+<button onclick="fetchRandevular()">Göster</button>
+
+<div id="sonuclar" style="margin-top: 20px;"></div>
+</body>
+</html>

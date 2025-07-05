@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Doktor Paneli</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        input, select, button { padding: 6px; }
+    </style>
+</head>
+<body>
+<h2>Doktor Paneli</h2>
+
+<label for="doktorId">Doktor ID:</label>
+<input type="number" id="doktorId" value="2">
+<button onclick="getAppointments()">Randevuları Getir</button>
+
+<table id="appointmentsTable" style="display:none;">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Hasta</th>
+        <th>Tarih</th>
+        <th>Durum</th>
+        <th>Not</th>
+        <th>İşlem</th>
+    </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+<script>
+    function getAppointments() {
+        const doktorId = document.getElementById("doktorId").value;
+        fetch(`/api/appointments/doktor/${doktorId}`)
+            .then(res => res.json())
+            .then(data => {
+                const table = document.getElementById("appointmentsTable");
+                const tbody = table.querySelector("tbody");
+                tbody.innerHTML = "";
+
+                data.forEach(r => {
+                    const row = document.createElement("tr");
+                    row.innerHTML = `
+                        <td>${r.id}</td>
+                        <td>${r.hasta.email}</td>
+                        <td>${r.tarih.replace("T", " ")}</td>
+                        <td>${r.status}</td>
+                        <td>${r.doktorNotu || "-"}</td>
+                        <td>
+                            <select id="status-${r.id}">
+                                <option value="ONAYLANDI">Onayla</option>
+                                <option value="REDDEDILDI">Reddet</option>
+                            </select>
+                            <input type="text" id="not-${r.id}" placeholder="Not gir...">
+                            <button onclick="updateStatus(${r.id})">Kaydet</button>
+                        </td>
+                    `;
+                    tbody.appendChild(row);
+                });
+
+                table.style.display = "table";
+            });
+    }
+
+    function updateStatus(id) {
+        const status = document.getElementById(`status-${id}`).value;
+        const not = document.getElementById(`not-${id}`).value;
+
+        fetch(`/api/appointments/${id}/status?status=${status}&not=${encodeURIComponent(not)}`, {
+            method: "PUT"
+        }).then(() => getAppointments());
+    }
+</script>
+</body>
+</html>

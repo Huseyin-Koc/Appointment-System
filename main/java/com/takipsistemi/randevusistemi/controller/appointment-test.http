@@ -1,0 +1,14 @@
+### Randevu Oluştur
+POST http://localhost:8080/api/appointments/create?hastaId=1&doktorId=2&tarih=2025-05-13T14:00
+Content-Type: application/json
+### Doktorun randevularını getir
+GET http://localhost:8080/api/appointments/doktor/2
+
+### Randevuyu onayla
+PUT http://localhost:8080/api/appointments/1/status?status=ONAYLANDI
+
+### Randevuyu reddet ve not ekle
+PUT http://localhost:8080/api/appointments/1/status?status=REDDEDILDI&not=Hasta+gelmedi
+
+### Hastanın geçmiş randevularını getir
+GET http://localhost:8080/api/appointments/hasta/1

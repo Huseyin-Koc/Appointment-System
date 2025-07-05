@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Kayıt Ol</title>
+</head>
+<body>
+<h2>Kullanıcı Kaydı</h2>
+<form action="/api/users/register" method="post">
+    <label>Email:</label>
+    <input type="text" name="email" required><br><br>
+
+    <label>Şifre:</label>
+    <input type="password" name="password" required><br><br>
+
+    <label>Rol:</label>
+    <select name="role">
+        <option value="HASTA">Hasta</option>
+        <option value="DOKTOR">Doktor</option>
+    </select><br><br>
+
+    <button type="submit">Kayıt Ol</button>
+</form>
+</body>
+</html>

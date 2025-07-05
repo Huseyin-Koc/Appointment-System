@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Randevu Al</title>
+</head>
+<body>
+<h2>Randevu Oluştur</h2>
+<form action="/api/appointments/create" method="post">
+    <label>Hasta ID:</label>
+    <input type="number" name="hastaId" required><br><br>
+
+    <label>Doktor ID:</label>
+    <input type="number" name="doktorId" required><br><br>
+
+    <label>Randevu Tarihi ve Saati:</label>
+    <input type="datetime-local" name="tarih" required><br><br>
+
+    <button type="submit">Randevu Al</button>
+</form>
+</body>
+</html>

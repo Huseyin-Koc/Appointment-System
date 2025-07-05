@@ -1,0 +1,19 @@
+### Hasta kaydı
+POST http://localhost:8080/api/users/register
+Content-Type: application/json
+
+{
+  "email": "hasta@example.com",
+  "password": "123456",
+  "role": "HASTA"
+}
+
+### Doktor kaydı
+POST http://localhost:8080/api/users/register
+Content-Type: application/json
+
+{
+  "email": "doktor@example.com",
+  "password": "123456",
+  "role": "DOKTOR"
+}

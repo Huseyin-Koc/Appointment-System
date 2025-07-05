@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Randevuları Gör</title>
+</head>
+<body>
+<h2>Randevular</h2>
+
+<!-- Hasta için randevu listesi -->
+<h3>Hasta Randevularını Gör</h3>
+<form action="/api/appointments/hasta/" method="get" onsubmit="return goToHasta();">
+    <label>Hasta ID:</label>
+    <input type="number" id="hastaId" required>
+    <button type="submit">Göster</button>
+</form>
+
+<br><hr><br>
+
+<!-- Doktor için randevu listesi -->
+<h3>Doktor Randevularını Gör</h3>
+<form action="/api/appointments/doktor/" method="get" onsubmit="return goToDoktor();">
+    <label>Doktor ID:</label>
+    <input type="number" id="doktorId" required>
+    <button type="submit">Göster</button>
+</form>
+
+<script>
+    function goToHasta() {
+        const id = document.getElementById("hastaId").value;
+        window.location.href = "/api/appointments/hasta/" + id;
+        return false;
+    }
+
+    function goToDoktor() {
+        const id = document.getElementById("doktorId").value;
+        window.location.href = "/api/appointments/doktor/" + id;
+        return false;
+    }
+</script>
+</body>
+</html>
