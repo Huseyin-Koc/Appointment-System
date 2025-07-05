@@ -14,13 +14,6 @@ The interface is fully in Turkish, designed for ease of use in local healthcare 
 
 ## 🖼 Screenshots
 
-### 🧑‍⚕️ Patient Panel
-
-> The patient can view available doctors and track past appointments.
-
-![Hasta Paneli](https://github.com/user-attachments/assets/ff418947-16e0-48d4-b660-cdcbf83e4886)
-
----
 
 ### 📅 Appointment Booking Screen
 
@@ -29,6 +22,12 @@ The interface is fully in Turkish, designed for ease of use in local healthcare 
 ![Randevu Alma](https://github.com/user-attachments/assets/79892fc4-e942-46a3-8e26-f471f41b5a6d)
 
 ---
+
+### 🧑‍⚕️ Patient Panel
+
+> The patient can view available doctors and track past appointments.
+
+![Hasta Paneli](https://github.com/user-attachments/assets/ff418947-16e0-48d4-b660-cdcbf83e4886)
 
 ### 🩻 Doctor Panel
 
