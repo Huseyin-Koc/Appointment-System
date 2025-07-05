@@ -15,7 +15,7 @@ The interface is fully in Turkish, designed for ease of use in local healthcare 
 ## 🖼 Screenshots
 
 
-### 📅 Appointment Booking Screen
+### 🧑‍⚕️ Patient Panel
 
 > The patient selects a doctor and a date to create a new appointment.
 
@@ -23,7 +23,7 @@ The interface is fully in Turkish, designed for ease of use in local healthcare 
 
 ---
 
-### 🧑‍⚕️ Patient Panel
+### 📅 Appointment Booking Screen
 
 > The patient can view available doctors and track past appointments.
 
